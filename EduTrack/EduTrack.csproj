@@ -137,6 +137,44 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataAccessRepo.cs" />
+    <Compile Include="Models\SchoolMgmtModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolMgmtModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchoolMgmtModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchoolMgmtModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolMgmtModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentModel.cs" />
+    <Compile Include="Models\Tbl_Attendance.cs">
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Exam.cs">
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_ExamMarks.cs">
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Student.cs">
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Subject.cs">
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Teacher.cs">
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_TimeTable.cs">
+      <DependentUpon>SchoolMgmtModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +201,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\edutrackre.png" />
+    <Content Include="Models\SchoolMgmtModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolMgmtModel.edmx</DependentUpon>
+      <LastGenOutput>SchoolMgmtModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SchoolMgmtModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolMgmtModel.edmx</DependentUpon>
+      <LastGenOutput>SchoolMgmtModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -174,6 +222,13 @@
     <Content Include="fonts\feather.eot" />
     <Content Include="fonts\feather.ttf" />
     <Content Include="fonts\feather.woff" />
+    <EntityDeploy Include="Models\SchoolMgmtModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SchoolMgmtModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SchoolMgmtModel.edmx.diagram">
+      <DependentUpon>SchoolMgmtModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -200,10 +255,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="wwwroot\font-awesome\css\" />
   </ItemGroup>
   <ItemGroup>

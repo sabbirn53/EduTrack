@@ -1,8 +1,66 @@
-﻿
+﻿@model IEnumerable<EduTrack.Models.Tbl_Student>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Students";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2> student Index</h2>
+<main class="container-fluid">
+    <section class="row mb-3">
+        <div class="col">
+            <h4 class="fw-bold text-primary">Student List</h4>
+        </div>
+    </section>
 
+    @if (Model.Count() <= 0)
+    {
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            No students found. Please add new students to the system.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+        </div>
+    }
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <a href="@Url.Action("Add","Student")" class="btn btn-outline-primary"> <i class="feather icon-user-plus mx-2"></i> Add New Student</a>
+
+            <table class="table table-bordered table-hover align-middle">
+                <thead style="background-color:#e0e7ff;">
+                    <tr>
+                        <th>#</th>
+                        <th>Student Name</th>
+                        <th>Father Name</th>
+                        <th>Date of Birth</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Registration Date</th>
+                        <th style="width:160px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ var i = 0; }
+                    @foreach (var std in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>@std.StdName</td>
+                            <td>@std.FatherName</td>
+                            <td>@std.DOB?.ToString("dd-MMM-yyyy")</td>
+                            <td>@std.StdAge</td>
+                            <td>@std.Gender</td>
+                            <td>@std.RegisterDate?.ToString("dd-MMM-yyyy")</td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-outline-primary me-1">
+                                    <i class="feather icon-edit"></i> Edit
+                                </a>
+                                <a href="#" class="btn btn-sm btn-outline-danger">
+                                    <i class="feather icon-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

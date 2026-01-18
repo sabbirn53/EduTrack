@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_SchoolManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Attendance">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="StdID" Type="varchar" MaxLength="8" />
+          <Property Name="IsAttendance" Type="bit" />
+          <Property Name="Type" Type="varchar" MaxLength="1" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_Exam">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamType" Type="nvarchar" MaxLength="30" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_ExamMarks">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExamDate" Type="date" />
+          <Property Name="StdId" Type="varchar" MaxLength="8" />
+          <Property Name="SubId" Type="int" />
+          <Property Name="Mark" Type="float" />
+        </EntityType>
+        <EntityType Name="Tbl_Student">
+          <Key>
+            <PropertyRef Name="StdID" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StdID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="StdName" Type="nvarchar" MaxLength="20" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="20" />
+          <Property Name="StdAge" Type="int" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" />
+          <Property Name="RegisterDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Tbl_Subject">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Tbl_Teacher">
+          <Key>
+            <PropertyRef Name="TecID" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TecID" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="TecName" Type="nvarchar" MaxLength="20" />
+          <Property Name="SubId" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_TimeTable">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Day" Type="nvarchar" MaxLength="10" />
+          <Property Name="Period1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Period2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Period3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Period4" Type="nvarchar" MaxLength="50" />
+          <Property Name="Period5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Period6" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DB_SchoolManagementModelStoreContainer">
+          <EntitySet Name="Tbl_Attendance" EntityType="Self.Tbl_Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Exam" EntityType="Self.Tbl_Exam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_ExamMarks" EntityType="Self.Tbl_ExamMarks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Teacher" EntityType="Self.Tbl_Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_TimeTable" EntityType="Self.Tbl_TimeTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_SchoolManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tbl_Attendance">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="StdID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IsAttendance" Type="Boolean" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Exam">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_ExamMarks">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExamDate" Type="DateTime" Precision="0" />
+          <Property Name="StdId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SubId" Type="Int32" />
+          <Property Name="Mark" Type="Double" />
+        </EntityType>
+        <EntityType Name="Tbl_Student">
+          <Key>
+            <PropertyRef Name="StdID" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StdID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="StdName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StdAge" Type="Int32" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="RegisterDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Tbl_Subject">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_Teacher">
+          <Key>
+            <PropertyRef Name="TecID" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TecID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TecName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SubId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_TimeTable">
+          <Key>
+            <PropertyRef Name="AutoId" />
+          </Key>
+          <Property Name="AutoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Day" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Period1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Period2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Period3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Period4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Period5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Period6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DB_SchoolManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Attendance" EntityType="Self.Tbl_Attendance" />
+          <EntitySet Name="Tbl_Exam" EntityType="Self.Tbl_Exam" />
+          <EntitySet Name="Tbl_ExamMarks" EntityType="Self.Tbl_ExamMarks" />
+          <EntitySet Name="Tbl_Student" EntityType="Self.Tbl_Student" />
+          <EntitySet Name="Tbl_Subject" EntityType="Self.Tbl_Subject" />
+          <EntitySet Name="Tbl_Teacher" EntityType="Self.Tbl_Teacher" />
+          <EntitySet Name="Tbl_TimeTable" EntityType="Self.Tbl_TimeTable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_SchoolManagementModelStoreContainer" CdmEntityContainer="DB_SchoolManagementEntities">
+          <EntitySetMapping Name="Tbl_Attendance">
+            <EntityTypeMapping TypeName="DB_SchoolManagementModel.Tbl_Attendance">
+              <MappingFragment StoreEntitySet="Tbl_Attendance">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="StdID" ColumnName="StdID" />
+                <ScalarProperty Name="IsAttendance" ColumnName="IsAttendance" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Exam">
+            <EntityTypeMapping TypeName="DB_SchoolManagementModel.Tbl_Exam">
+              <MappingFragment StoreEntitySet="Tbl_Exam">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="ExamType" ColumnName="ExamType" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ExamMarks">
+            <EntityTypeMapping TypeName="DB_SchoolManagementModel.Tbl_ExamMarks">
+              <MappingFragment StoreEntitySet="Tbl_ExamMarks">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="ExamDate" ColumnName="ExamDate" />
+                <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="SubId" ColumnName="SubId" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Student">
+            <EntityTypeMapping TypeName="DB_SchoolManagementModel.Tbl_Student">
+              <MappingFragment StoreEntitySet="Tbl_Student">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="StdID" ColumnName="StdID" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="StdName" ColumnName="StdName" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="StdAge" ColumnName="StdAge" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Subject">
+            <EntityTypeMapping TypeName="DB_SchoolManagementModel.Tbl_Subject">
+              <MappingFragment StoreEntitySet="Tbl_Subject">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="SubName" ColumnName="SubName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Teacher">
+            <EntityTypeMapping TypeName="DB_SchoolManagementModel.Tbl_Teacher">
+              <MappingFragment StoreEntitySet="Tbl_Teacher">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="TecID" ColumnName="TecID" />
+                <ScalarProperty Name="TecName" ColumnName="TecName" />
+                <ScalarProperty Name="SubId" ColumnName="SubId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_TimeTable">
+            <EntityTypeMapping TypeName="DB_SchoolManagementModel.Tbl_TimeTable">
+              <MappingFragment StoreEntitySet="Tbl_TimeTable">
+                <ScalarProperty Name="AutoId" ColumnName="AutoId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Period1" ColumnName="Period1" />
+                <ScalarProperty Name="Period2" ColumnName="Period2" />
+                <ScalarProperty Name="Period3" ColumnName="Period3" />
+                <ScalarProperty Name="Period4" ColumnName="Period4" />
+                <ScalarProperty Name="Period5" ColumnName="Period5" />
+                <ScalarProperty Name="Period6" ColumnName="Period6" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
