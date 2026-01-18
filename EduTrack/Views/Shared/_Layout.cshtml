@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+           <!--Title-->
+            <a class="navbar-brand fw-bolder px-5" href="#" style="font-size:25px !important;cursor:none">EduTrack</a>
+        </div>
+    </nav>
+    <div class="wrapper">
+        <!--Sidebar-->
+        <div class="sidebar">
+            <!--logo-->
+            <div style="display:flex;align-items:center;justify-content:center">
+                <img src="~/images/edutrackre.png" alt="Edu Track" style="width:200px;height:150px;" />
+            </div>
+            <ul style="list-style:none; padding:0 !important">
+                <li class="nav-item">
+                    @Html.ActionLink(" Student Management", "Index", "Student", new { area = "" }, new { @class = "nav-link feather icon-users" }) <!--feather icon-->
+                </li>
+            </ul>
+        </div>
+        <!--Main content area-->
+        <div class="wrapper-content">
+            @RenderBody()
+
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

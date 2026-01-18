@@ -1,0 +1,20 @@
+{
+  "version": "3.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "feather-icons@4.29.2",
+      "destination": "wwwroot/feather-icons/",
+      "files": [
+        "feather.min.js"
+      ]
+    },
+    {
+      "library": "font-awesome@7.0.1",
+      "destination": "wwwroot/font-awesome/",
+      "files": [
+        "css/all.min.css"
+      ]
+    }
+  ]
+}
