@@ -1,0 +1,99 @@
+﻿@model EduTrack.Models.Tbl_Student
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="container-fluid">
+
+    @if (ViewBag.Message != null)
+    {
+        if (ViewBag.Message == "Success")
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Status!</strong> successfully Updated.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+        }
+        else
+        {
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Status!</strong> failed!! Please try again.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+</div>
+        }
+    }
+
+    @using (Html.BeginForm("Edit", "Student", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <section>
+                <h3>Edit Student</h3>
+            </section>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            @Html.HiddenFor(model => model.StdID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.DOB,Model.DOB.HasValue?Model.DOB.Value.ToString("dd-MM-YYYY"):"", new { @class = "form-control", type = "date", required = "required" })
+                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StdName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StdName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StdName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FatherName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FatherName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FatherName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StdAge, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StdAge, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StdAge, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.RadioButtonFor(model => model.Gender,"M") Male
+                    @Html.RadioButtonFor(model => model.Gender,"F") Female
+                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RegisterDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.RegisterDate, Model.RegisterDate.HasValue ? Model.RegisterDate.Value.ToString("dd-MM-YYYY") : "", new { @class = "form-control", type = "date", required = "required" })
+                    @Html.ValidationMessageFor(model => model.RegisterDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10 mt-2">
+                    <input type="submit" value="Save" class="btn btn-outline-primary" />
+                    @Html.ActionLink("Back To List", "Index", null, new { @class = "btn btn-outline-secondary ms-2" })
+                </div>
+            </div>
+        </div>
+    }
+
+</main>

@@ -1,0 +1,52 @@
+﻿@model EduTrack.Models.Tbl_Student
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<main class="container-fluid">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Status!</strong> Are you sure. you want to delete This.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    <div>
+        <h4> Delete Student</h4>
+        <hr />
+        @using (Html.BeginForm("ConfirmDelete", "Student", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.StdID)
+            <dl class="dl-horizontal">
+                <dt>
+                    Student Name : @Html.DisplayFor(model => model.StdName)
+                </dt>
+
+                <dt>
+                    Father Name : @Html.DisplayFor(model => model.FatherName)
+                </dt>
+
+                <dt>
+                    Date Of Birth:@Html.DisplayFor(model => model.DOB.Value.Date)
+                </dt>
+                <dt>
+                    Age : @Html.DisplayFor(model => model.StdAge)
+                </dt>
+
+                <dt>
+                    Gender: @Html.DisplayFor(model => model.Gender)
+                </dt>
+
+                <dt>
+                    Registration Date : @Html.DisplayFor(model => model.RegisterDate.Value.Date)
+                </dt>
+
+            </dl>
+
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+                @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-outline-secondary" })
+            </div>
+        }
+    </div>
+</main>
